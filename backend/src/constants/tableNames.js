@@ -1,0 +1,17 @@
+module.exports = {
+  user: 'user',
+  build_type: 'build_type',
+  ownership_status: 'ownership_status',
+  part_category: 'part_category',
+  part_status: 'part_status',
+  record_type: 'record_type',
+  image_type: 'image_type',
+  make: 'make',
+  part_manufacturer: 'part_manufacturer',
+  country: 'country',
+  state: 'state',
+  address: 'address',
+  model: 'model',
+  submodel: 'submodel',
+  model_year: 'model_year',
+};
