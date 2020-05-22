@@ -40,10 +40,10 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-  await knex.schema.dropTableIfExists(tableNames.record);
-
   await Promise.all([
     knex.schema.dropTableIfExists(tableNames.record_info),
     knex.schema.dropTableIfExists(tableNames.record_image),
   ]);
+
+  await knex.schema.dropTableIfExists(tableNames.record);
 };

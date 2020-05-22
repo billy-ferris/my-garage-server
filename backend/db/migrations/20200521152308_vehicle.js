@@ -52,11 +52,13 @@ exports.up = async (knex) => {
 };
 
 exports.down = async (knex) => {
-  await Promise.all([
-    tableNames.vehicle_spec,
-    tableNames.vehicle_image,
-    tableNames.vehicle_info,
-  ]).map((tableName) => knex.schema.dropTableIfExists(tableName));
+  await Promise.all(
+    [
+      tableNames.vehicle_spec,
+      tableNames.vehicle_image,
+      tableNames.vehicle_info,
+    ].map((tableName) => knex.schema.dropTableIfExists(tableName))
+  );
 
   await knex.schema.dropTableIfExists(tableNames.vehicle);
 };
