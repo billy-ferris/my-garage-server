@@ -6,9 +6,6 @@ const {
   references,
 } = require('../../src/lib/tableUtils');
 
-/**
- * @param {Knex} knex
- */
 exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.vehicle, (table) => {
     table.increments();
@@ -56,10 +53,10 @@ exports.up = async (knex) => {
 
 exports.down = async (knex) => {
   await Promise.all([
-    knex.schema.dropTableIfExists(tableNames.vehicle_image),
-    knex.schema.dropTableIfExists(tableNames.vehicle_spec),
-    knex.schema.dropTableIfExists(tableNames.vehicle_info),
-  ]);
+    tableNames.vehicle_spec,
+    tableNames.vehicle_image,
+    tableNames.vehicle_info,
+  ]).map((tableName) => knex.schema.dropTableIfExists(tableName));
 
   await knex.schema.dropTableIfExists(tableNames.vehicle);
 };

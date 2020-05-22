@@ -6,9 +6,6 @@ const {
   addDefaultColumns,
 } = require('../../src/lib/tableUtils');
 
-/**
- * @param {Knex} knex
- */
 exports.up = async (knex) => {
   await createNameTable(knex, tableNames.make);
 
@@ -19,19 +16,20 @@ exports.up = async (knex) => {
     addDefaultColumns(table);
   });
 
-  await knex.schema.createTable(tableNames.submodel, (table) => {
-    table.increments();
-    table.string('name').notNullable();
-    references(table, tableNames.model);
-    addDefaultColumns(table);
-  });
-
-  await knex.schema.createTable(tableNames.model_year, (table) => {
-    table.increments();
-    table.integer('year_num').notNullable();
-    references(table, tableNames.model);
-    addDefaultColumns(table);
-  });
+  await Promise.all([
+    knex.schema.createTable(tableNames.submodel, (table) => {
+      table.increments();
+      table.string('name').notNullable();
+      references(table, tableNames.model);
+      addDefaultColumns(table);
+    }),
+    knex.schema.createTable(tableNames.model_year, (table) => {
+      table.increments();
+      table.integer('year_num').notNullable();
+      references(table, tableNames.model);
+      addDefaultColumns(table);
+    }),
+  ]);
 };
 
 exports.down = async (knex) => {

@@ -21,4 +21,7 @@ module.exports = {
   part: 'part',
   part_info: 'part_info',
   part_image: 'part_image',
+  record: 'record',
+  record_info: 'record_info',
+  record_image: 'record_image',
 };
