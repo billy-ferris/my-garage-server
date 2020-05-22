@@ -17,4 +17,5 @@ module.exports = {
   vehicle: 'vehicle',
   vehicle_info: 'vehicle_info',
   vehicle_spec: 'vehicle_spec',
+  vehicle_image: 'vehicle_image',
 };

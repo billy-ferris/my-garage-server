@@ -8,7 +8,7 @@ function email(table, columnName) {
 }
 
 function url(table, columnName) {
-  table.string(columnName, 2000);
+  return table.string(columnName, 2000);
 }
 
 function createNameTable(knex, table_name) {
