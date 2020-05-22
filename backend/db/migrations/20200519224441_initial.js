@@ -27,13 +27,6 @@ exports.up = async (knex) => {
     createNameTable(knex, tableNames.part_status),
     createNameTable(knex, tableNames.record_type),
     createNameTable(knex, tableNames.image_type),
-    knex.schema.createTable(tableNames.part_manufacturer, (table) => {
-      table.increments();
-      table.string('name', 128).notNullable().unique();
-      url(table, 'logo_url');
-      url(table, 'website_url');
-      addDefaultColumns(table);
-    }),
     knex.schema.createTable(tableNames.country, (table) => {
       table.increments();
       table.string('name').notNullable().unique();
@@ -60,9 +53,21 @@ exports.up = async (knex) => {
     references(table, tableNames.country);
     addDefaultColumns(table);
   });
+
+  await knex.schema.createTable(tableNames.company, (table) => {
+    table.increments();
+    table.string('name').notNullable();
+    email(table, 'email');
+    url(table, 'logo_url');
+    table.string('description', 1000);
+    url(table, 'website_url');
+    references(table, tableNames.address, false);
+    addDefaultColumns(table);
+  });
 };
 
 exports.down = async (knex) => {
+  await knex.schema.dropTableIfExists(tableNames.company);
   await knex.schema.dropTableIfExists(tableNames.address);
   await knex.schema.dropTableIfExists(tableNames.state);
 
@@ -71,7 +76,6 @@ exports.down = async (knex) => {
       tableNames.user,
       tableNames.record_type,
       tableNames.part_status,
-      tableNames.part_manufacturer,
       tableNames.part_category,
       tableNames.ownership_status,
       tableNames.country,
