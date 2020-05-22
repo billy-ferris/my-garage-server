@@ -11,6 +11,10 @@ function url(table, columnName) {
   return table.string(columnName, 2000);
 }
 
+function description(table, columnName) {
+  table.string(columnName, 1000);
+}
+
 function createNameTable(knex, table_name) {
   return knex.schema.createTable(table_name, (table) => {
     table.increments();
@@ -39,4 +43,5 @@ module.exports = {
   url,
   createNameTable,
   references,
+  description,
 };

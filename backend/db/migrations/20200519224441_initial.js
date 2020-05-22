@@ -6,6 +6,7 @@ const {
   url,
   createNameTable,
   references,
+  description,
 } = require('../../src/lib/tableUtils');
 
 /**
@@ -59,7 +60,7 @@ exports.up = async (knex) => {
     table.string('name').notNullable();
     email(table, 'email');
     url(table, 'logo_url');
-    table.string('description', 1000);
+    description(table, 'description');
     url(table, 'website_url');
     references(table, tableNames.address, false);
     addDefaultColumns(table);

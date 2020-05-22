@@ -25,12 +25,13 @@ exports.up = async (knex) => {
     knex.schema.createTable(tableNames.vehicle_info, (table) => {
       table.increments();
       references(table, tableNames.vehicle);
-      table.dateTime('purchase_date').notNullable();
-      table.float('purchase_price').notNullable().defaultTo(0);
+      table.dateTime('purchase_date');
+      // does purchase price need to be not nullable and have default??
+      table.float('purchase_price');
       table.float('msrp');
       references(table, tableNames.ownership_status);
-      references(table, tableNames.build_type);
-      table.integer('mileage_bought_at').notNullable().unsigned();
+      references(table, tableNames.build_type, false);
+      table.integer('mileage_bought_at').unsigned();
       table.integer('mileage_at').unsigned();
       table.float('sold_price');
       addDefaultColumns(table);
@@ -48,6 +49,7 @@ exports.up = async (knex) => {
       url(table, 'image_url').notNullable();
       references(table, tableNames.vehicle);
       references(table, tableNames.image_type);
+      addDefaultColumns(table);
     }),
   ]);
 };

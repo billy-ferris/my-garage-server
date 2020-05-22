@@ -1,6 +1,10 @@
 const Knex = require('knex');
 const tableNames = require('../../src/constants/tableNames');
-const { createNameTable, references } = require('../../src/lib/tableUtils');
+const {
+  createNameTable,
+  references,
+  addDefaultColumns,
+} = require('../../src/lib/tableUtils');
 
 /**
  * @param {Knex} knex
@@ -12,18 +16,21 @@ exports.up = async (knex) => {
     table.increments();
     table.string('name').notNullable();
     references(table, tableNames.make);
+    addDefaultColumns(table);
   });
 
   await knex.schema.createTable(tableNames.submodel, (table) => {
     table.increments();
     table.string('name').notNullable();
     references(table, tableNames.model);
+    addDefaultColumns(table);
   });
 
   await knex.schema.createTable(tableNames.model_year, (table) => {
     table.increments();
     table.integer('year_num').notNullable();
     references(table, tableNames.model);
+    addDefaultColumns(table);
   });
 };
 

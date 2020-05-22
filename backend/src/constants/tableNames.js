@@ -18,4 +18,7 @@ module.exports = {
   vehicle_info: 'vehicle_info',
   vehicle_spec: 'vehicle_spec',
   vehicle_image: 'vehicle_image',
+  part: 'part',
+  part_info: 'part_info',
+  part_image: 'part_image',
 };
