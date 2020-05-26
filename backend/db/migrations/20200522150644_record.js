@@ -7,6 +7,9 @@ const {
   description,
 } = require('../../src/lib/tableUtils');
 
+/**
+ * @param {Knex} knex
+ */
 exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.record, (table) => {
     table.increments();
@@ -39,6 +42,9 @@ exports.up = async (knex) => {
   ]);
 };
 
+/**
+ * @param {Knex} knex
+ */
 exports.down = async (knex) => {
   await Promise.all([
     knex.schema.dropTableIfExists(tableNames.record_info),

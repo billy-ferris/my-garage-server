@@ -12,7 +12,7 @@ function url(table, columnName) {
 }
 
 function description(table, columnName) {
-  table.string(columnName, 1000);
+  return table.string(columnName, 1000);
 }
 
 function createNameTable(knex, table_name) {

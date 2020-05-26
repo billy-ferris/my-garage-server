@@ -6,6 +6,9 @@ const {
   addDefaultColumns,
 } = require('../../src/lib/tableUtils');
 
+/**
+ * @param {Knex} knex
+ */
 exports.up = async (knex) => {
   await createNameTable(knex, tableNames.make);
 
@@ -32,6 +35,9 @@ exports.up = async (knex) => {
   ]);
 };
 
+/**
+ * @param {Knex} knex
+ */
 exports.down = async (knex) => {
   await Promise.all(
     [tableNames.model_year, tableNames.submodel].map((tableName) =>

@@ -1,0 +1,35 @@
+make,model,year,submodel
+BMW,3 Series,1992,318i 4dr Sedan
+BMW,3 Series,1992,325i 4dr Sedan
+BMW,3 Series,1992,318i 2dr Convertible
+BMW,3 Series,1992,325i 2dr Convertible
+BMW,3 Series,1992,318is 2dr Coupe
+BMW,3 Series,1992,325is 2dr Coupe
+BMW,3 Series,1995,318i 4dr Sedan
+BMW,3 Series,1995,328i 4dr Sedan
+BMW,3 Series,1995,318i 2dr Convertible
+BMW,3 Series,1995,328i 2dr Convertible
+BMW,3 Series,1995,318is 2dr Coupe
+BMW,3 Series,1995,328is 2dr Coupe
+BMW,3 Series,1995,318ti 2dr Hatchback
+BMW,M3,1995,2dr Coupe
+BMW,M3,1995,2dr Convertible
+BMW,M3,1995,4dr Sedan
+BMW,M3,1995,Lightweight
+BMW,3 Series,1996,318i 4dr Sedan
+BMW,3 Series,1996,328i 4dr Sedan
+BMW,3 Series,1996,318i 2dr Convertible
+BMW,3 Series,1996,328i 2dr Convertible
+BMW,3 Series,1996,318is 2dr Coupe
+BMW,3 Series,1996,328is 2dr Coupe
+BMW,3 Series,1996,318ti 2dr Hatchback
+BMW,M3,1996,2dr Coupe
+BMW,M3,1996,2dr Convertible
+BMW,M3,1996,4dr Sedan
+Volkswagen,Golf,2013,2dr Hatchback
+Volkswagen,Golf,2013,2.5L
+Volkswagen,Golf,2013,2.0L TDI
+Volkswagen,Golf GTI,2013,2dr Hatchback
+Volkswagen,Golf GTI,2013,4dr Hatchback
+Volkswagen,Golf R,2013,2dr Hatchback
+Volkswagen,Golf R,2013,4dr Hatchback

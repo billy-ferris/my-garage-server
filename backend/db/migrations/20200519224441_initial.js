@@ -9,6 +9,9 @@ const {
   description,
 } = require('../../src/lib/tableUtils');
 
+/**
+ * @param {Knex} knex
+ */
 exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable(tableNames.user, (table) => {
@@ -22,9 +25,14 @@ exports.up = async (knex) => {
     createNameTable(knex, tableNames.ownership_status),
     createNameTable(knex, tableNames.build_type),
     createNameTable(knex, tableNames.part_category),
-    createNameTable(knex, tableNames.part_status),
     createNameTable(knex, tableNames.record_type),
     createNameTable(knex, tableNames.image_type),
+    knex.schema.createTable(tableNames.part_status, (table) => {
+      table.increments();
+      table.string('name').notNullable().unique();
+      description(table, 'description').notNullable();
+      addDefaultColumns(table);
+    }),
     knex.schema.createTable(tableNames.country, (table) => {
       table.increments();
       table.string('name').notNullable().unique();
@@ -64,6 +72,9 @@ exports.up = async (knex) => {
   });
 };
 
+/**
+ * @param {Knex} knex
+ */
 exports.down = async (knex) => {
   await knex.schema.dropTableIfExists(tableNames.company);
   await knex.schema.dropTableIfExists(tableNames.address);
