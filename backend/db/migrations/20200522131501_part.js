@@ -17,7 +17,6 @@ exports.up = async (knex) => {
     table.string('name').notNullable();
     description(table, 'description');
     references(table, tableNames.part_category);
-    // TODO: make part_manufacturer a string?
     references(table, tableNames.company, true, 'part_manufacturer');
     table.string('part_num', 100);
     addDefaultColumns(table);
