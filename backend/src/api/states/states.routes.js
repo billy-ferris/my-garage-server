@@ -10,9 +10,9 @@ router.get('/', async (req, res, next) => {
     if (states) {
       return res.json(states);
     }
-    next();
+    return next();
   } catch (error) {
-    next(error);
+    return next(error);
   }
 });
 
@@ -23,9 +23,9 @@ router.get('/:id', async (req, res, next) => {
     if (state) {
       return res.json(state);
     }
-    next();
+    return next();
   } catch (error) {
-    next(error);
+    return next(error);
   }
 });
 

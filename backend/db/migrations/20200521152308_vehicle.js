@@ -1,4 +1,3 @@
-const Knex = require('knex');
 const tableNames = require('../../src/constants/tableNames');
 const {
   addDefaultColumns,
@@ -55,7 +54,7 @@ exports.up = async (knex) => {
 };
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.down = async (knex) => {
   await Promise.all(

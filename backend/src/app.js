@@ -3,7 +3,8 @@ const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
-const NODE_ENV = process.env.NODE_ENV;
+
+const { NODE_ENV } = process.env;
 
 const middlewares = require('./middlewares');
 const api = require('./api');

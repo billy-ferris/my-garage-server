@@ -13,7 +13,7 @@ function notFound(req, res, next) {
   next(error);
 }
 
-function errorHandler(error, req, res, next) {
+function errorHandler(error, req, res) {
   const statusCode =
     res.statusCode === 200 ? errorTypes[error.name] || 500 : res.statusCode;
   res.status(statusCode);

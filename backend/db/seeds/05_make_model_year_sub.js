@@ -1,5 +1,3 @@
-const Knex = require('knex');
-
 const tableNames = require('../../src/constants/tableNames');
 const { getIDByName } = require('../../src/lib/dataUtils');
 
@@ -9,7 +7,7 @@ const submodels = require('../../src/constants/sample-data/submodels_sample');
 const years = require('../../src/constants/sample-data/model_years_sample');
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.seed = async (knex) => {
   const insertedMakes = await knex(tableNames.make).insert(makes, '*');

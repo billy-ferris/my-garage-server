@@ -1,11 +1,10 @@
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
-const Knex = require('knex');
 
 const tableNames = require('../../src/constants/tableNames');
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.seed = async (knex) => {
   await Promise.all(Object.keys(tableNames).map((name) => knex(name).del()));

@@ -22,7 +22,7 @@ describe('GET /api/v1/states', () => {
   });
 
   it('should respond with a 404 error', async () => {
-    const response = await supertest(app)
+    await supertest(app)
       .get('/api/v1/states/99999')
       .expect('Content-Type', /json/)
       .expect(404);

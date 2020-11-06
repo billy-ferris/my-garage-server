@@ -1,11 +1,9 @@
-const Knex = require('knex');
-
 const tableNames = require('../../src/constants/tableNames');
 const ownership_statuses = require('../../src/constants/ownership_statuses');
 const part_statuses = require('../../src/constants/part_statuses');
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.seed = async (knex) => {
   await knex(tableNames.ownership_status).insert(ownership_statuses);

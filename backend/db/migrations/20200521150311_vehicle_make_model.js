@@ -1,4 +1,3 @@
-const Knex = require('knex');
 const tableNames = require('../../src/constants/tableNames');
 const {
   createNameTable,
@@ -7,7 +6,7 @@ const {
 } = require('../../src/lib/tableUtils');
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.up = async (knex) => {
   await createNameTable(knex, tableNames.make);
@@ -36,7 +35,7 @@ exports.up = async (knex) => {
 };
 
 /**
- * @param {Knex} knex
+ * @param {import('knex')} knex
  */
 exports.down = async (knex) => {
   await Promise.all(

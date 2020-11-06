@@ -18,4 +18,5 @@ module.exports = [
   { name: 'Suspension/Steering' },
   { name: 'Wheels & Tires' },
   { name: 'Tools' },
+  { name: 'Other' },
 ];
