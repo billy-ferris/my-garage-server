@@ -66,6 +66,7 @@ exports.up = async (knex) => {
     table.increments();
     table.string('name').notNullable();
     email(table, 'email');
+    table.string('phone', 50);
     url(table, 'logo_url');
     description(table, 'description');
     url(table, 'website_url');

@@ -13,7 +13,8 @@ function notFound(req, res, next) {
   next(error);
 }
 
-function errorHandler(error, req, res) {
+// eslint-disable-next-line no-unused-vars
+function errorHandler(error, req, res, next) {
   const statusCode =
     res.statusCode === 200 ? errorTypes[error.name] || 500 : res.statusCode;
   res.status(statusCode);

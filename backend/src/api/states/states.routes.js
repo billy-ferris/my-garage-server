@@ -7,12 +7,9 @@ const router = express.Router();
 router.get('/', async (req, res, next) => {
   try {
     const states = await queries.find();
-    if (states) {
-      return res.json(states);
-    }
-    return next();
+    res.json(states);
   } catch (error) {
-    return next(error);
+    next(error);
   }
 });
 

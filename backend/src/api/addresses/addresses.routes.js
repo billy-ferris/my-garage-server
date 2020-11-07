@@ -1,12 +1,12 @@
 const express = require('express');
 
-const User = require('./addresses.model');
+const Address = require('./addresses.model');
 
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
-    const addresses = await User.query().where('deleted_at', null);
+    const addresses = await Address.query().where('deleted_at', null);
     res.json(addresses);
   } catch (error) {
     next(error);
@@ -22,7 +22,7 @@ router.post('/', async (req, res, next) => {
         }
       }
     );
-    const address = await User.query().insert(req.body);
+    const address = await Address.query().insert(req.body);
     res.json(address);
   } catch (error) {
     next(error);
