@@ -45,6 +45,21 @@
       "$id": "#/properties/address_id",
       "type": "number",
       "title": "The database ID of the companies address."
+    },
+    "created_at": {
+      "$id": "#/properties/created_at",
+      "type": "string",
+      "title": "The creation date of the company."
+    },
+    "updated_at": {
+      "$id": "#/properties/updated_at",
+      "type": "string",
+      "title": "The date the company was last updated."
+    },
+    "deleted_at": {
+      "$id": "#/properties/deleted_at",
+      "type": "string",
+      "title": "The date the company was deleted."
     }
   }
 }
