@@ -13,6 +13,21 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const company = await Company.query()
+      .where({ id })
+      .andWhere('deleted_at', null);
+    if (company) {
+      res.json(company);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post('/', async (req, res, next) => {
   try {
     const company = await Company.query().insert(req.body);

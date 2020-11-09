@@ -15,17 +15,17 @@ exports.up = async (knex) => {
     references(table, tableNames.make);
     references(table, tableNames.model);
     references(table, tableNames.submodel);
-    references(table, tableNames.model_year, true, 'year_id');
-    table.string('color', 100);
+    references(table, tableNames.model_year, true, 'year');
     addDefaultColumns(table);
+    table.unique(['make_id', 'model_id', 'submodel_id', 'year_id']);
   });
 
   await Promise.all([
     knex.schema.createTable(tableNames.vehicle_info, (table) => {
       table.increments();
       references(table, tableNames.vehicle);
+      table.string('color', 50);
       table.dateTime('purchase_date');
-      // does purchase price need to be not nullable and have default??
       table.float('purchase_price');
       table.float('msrp');
       references(table, tableNames.ownership_status);

@@ -13,6 +13,21 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const address = await Address.query()
+      .where({ id })
+      .andWhere('deleted_at', null);
+    if (address) {
+      res.json(address);
+    }
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post('/', async (req, res, next) => {
   try {
     ['street_address_1', 'street_address_2', 'city', 'zipcode'].forEach(

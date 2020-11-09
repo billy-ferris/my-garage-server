@@ -59,7 +59,15 @@ exports.up = async (knex) => {
     references(table, tableNames.state, false);
     references(table, tableNames.country);
     addDefaultColumns(table);
-    table.unique(['street_address_1', 'street_address_2', 'city', 'zipcode']);
+    table.unique([
+      'street_address_1',
+      // TODO: make work when 'street_address_2' value is null
+      'street_address_2',
+      'city',
+      'zipcode',
+      'country_id',
+      'state_id',
+    ]);
   });
 
   await knex.schema.createTable(tableNames.company, (table) => {

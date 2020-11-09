@@ -18,11 +18,11 @@ router.get('/:id', async (req, res, next) => {
   try {
     const state = await queries.get(parseInt(id, 10) || 0);
     if (state) {
-      return res.json(state);
+      res.json(state);
     }
-    return next();
+    next();
   } catch (error) {
-    return next(error);
+    next(error);
   }
 });
 
