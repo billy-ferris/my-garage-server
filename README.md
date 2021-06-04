@@ -50,57 +50,47 @@ Deleted At - datetime
 
 ## API Endpoints
 
+<!-- TODO: Change Auth to Passport or AuthO -->
 - [x] Auth
   - [x] Signup
   - [x] Signin
 - [ ] Addresses
   - [x] Create
   - [x] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
-- [ ] Build Types
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
-- [ ] Companys
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
-- [ ] Countrys
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
-- [ ] Image Types
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
+  - [x] Get By ID
+  - [x] Update
+  - [x] Delete
+- [x] Build Types
+  - [x] Create
+  - [x] List
+  - [x] Get By ID
+  - [x] Update
+  - [x] Delete
+- [x] Companies
+  - [x] Create
+  - [x] List
+  - [x] Get By ID
+  - [x] Update
+  - [x] Delete
+- [x] Countries
+  - [x] List
+  - [x] Get By ID
+- [x] Image Types
+  - [x] Create
+  - [x] List
+  - [x] Get By ID
+  - [x] Update
+  - [x] Delete
+<!-- nested endpoints?-->
 - [ ] Makes
-  - [ ] Create
   - [ ] List
   - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
 - [ ] Models
-  - [ ] Create
   - [ ] List
   - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
 - [ ] Model Years
-  - [ ] Create
   - [ ] List
   - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
 - [ ] Ownership Status'
   - [ ] Create
   - [ ] List
@@ -161,9 +151,10 @@ Deleted At - datetime
   - [ ] Get By ID
   - [ ] Update
   - [ ] Delete
-- [ ] States
+- [x] States
   - [x] List
   - [x] Get By ID
+  - [x] Query By Country ID
 - [ ] Submodels
   - [ ] Create
   - [ ] List
@@ -173,13 +164,13 @@ Deleted At - datetime
 - [ ] Users
   - [x] Create - Auth, Signup
   - [x] List
-  - [ ] Get By ID
+  - [x] Get By ID
   - [ ] Update
   - [ ] Delete
 - [ ] Vehicles
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
+  - [x] Create
+  - [x] List
+  - [x] Get By ID
   - [ ] Update
   - [ ] Delete
 - [ ] Vehicle Images
