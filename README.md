@@ -167,12 +167,12 @@ Deleted At - datetime
   - [x] Get By ID
   - [ ] Update
   - [ ] Delete
-- [ ] Vehicles
+- [x] Vehicles
   - [x] Create
   - [x] List
   - [x] Get By ID
-  - [ ] Update
-  - [ ] Delete
+  - [x] Update
+  - [x] Delete
 - [ ] Vehicle Images
   - [ ] Create
   - [ ] List
