@@ -42,10 +42,21 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try {
-    const company = await Company.query().patchAndFetchById(
-      req.params.id,
-      req.body
-    );
+    const company = await Company.query().patchAndFetchById(req.params.id, {
+      ...req.body,
+      updated_at: new Date().toISOString(),
+    });
+    res.json(company);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const company = await Company.query().patchAndFetchById(req.params.id, {
+      deleted_at: new Date().toISOString(),
+    });
     res.json(company);
   } catch (error) {
     next(error);

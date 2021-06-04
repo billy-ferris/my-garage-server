@@ -9,14 +9,28 @@ const fields = [
 ];
 
 module.exports = {
-  find() {
-    // TODO: filter by country
+  getAllStates() {
     return db(tableNames.state)
       .select(fields)
       .innerJoin('country', 'country.id', 'state.country_id');
   },
 
-  get(id) {
+  getStatesByCountryId(id) {
+    return db(tableNames.state)
+      .select(fields)
+      .where({ 'country.id': id })
+      .innerJoin('country', 'country.id', 'state.country_id');
+  },
+
+  // TODO: Get working - insert country code lowercase in db?
+  getStatesByCountryCode(code) {
+    return db(tableNames.state)
+      .select(fields)
+      .where({ 'country.code': code.toLowerCase() })
+      .innerJoin('country', 'country.id', 'state.country_id');
+  },
+
+  getStateById(id) {
     return db(tableNames.state)
       .select(fields)
       .where({

@@ -1,14 +1,13 @@
 const express = require('express');
 
-const Vehicle = require('./vehicles.model');
-const queries = require('./vehicles.queries');
+const BuildType = require('./build_types.model');
 
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
-    const vehicles = await queries.getAllVehicles();
-    res.json(vehicles);
+    const buildTypes = await BuildType.query().where('deleted_at', null);
+    res.json(buildTypes);
   } catch (error) {
     next(error);
   }
@@ -17,12 +16,10 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
-    const vehicle = await queries.getVehicleById(id);
-    if (vehicle) {
-      res.json(vehicle);
-      return;
-    }
-    next();
+    const buildType = await BuildType.query()
+      .where({ id })
+      .andWhere('deleted_at', null);
+    res.json(buildType);
   } catch (error) {
     next(error);
   }
@@ -30,9 +27,9 @@ router.get('/:id', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const vehicle = await Vehicle.query().insert(req.body);
-    if (vehicle) {
-      res.json(vehicle);
+    const buildType = await BuildType.query().insert(req.body);
+    if (buildType) {
+      res.json(buildType);
       return;
     }
     next();
@@ -43,11 +40,11 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try {
-    const vehicle = await Vehicle.query().patchAndFetchById(req.params.id, {
+    const buildType = await BuildType.query().patchAndFetchById(req.params.id, {
       ...req.body,
       updated_at: new Date().toISOString(),
     });
-    res.json(vehicle);
+    res.json(buildType);
   } catch (error) {
     next(error);
   }
@@ -55,10 +52,10 @@ router.patch('/:id', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const vehicle = await Vehicle.query().patchAndFetchById(req.params.id, {
+    const buildType = await BuildType.query().patchAndFetchById(req.params.id, {
       deleted_at: new Date().toISOString(),
     });
-    res.json(vehicle);
+    res.json(buildType);
   } catch (error) {
     next(error);
   }
