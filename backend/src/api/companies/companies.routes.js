@@ -21,6 +21,7 @@ router.get('/:id', async (req, res, next) => {
       .andWhere('deleted_at', null);
     if (company) {
       res.json(company);
+      return;
     }
     next();
   } catch (error) {
@@ -33,10 +34,11 @@ router.post('/', async (req, res, next) => {
     const company = await Company.query().insert(req.body);
     if (company) {
       res.json(company);
+      return;
     }
-    return next();
+    next();
   } catch (error) {
-    return next(error);
+    next(error);
   }
 });
 
