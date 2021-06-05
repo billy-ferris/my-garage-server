@@ -1,13 +1,32 @@
 const express = require('express');
 
 const Vehicle = require('./vehicles.model');
-const queries = require('./vehicles.queries');
+const tableNames = require('../../constants/tableNames');
 
 const router = express.Router();
 
+const fields = [
+  `${tableNames.vehicle}.id`,
+  `${tableNames.vehicle}.user_id`,
+  `${tableNames.make}.name as make`,
+  `${tableNames.model}.name as model`,
+  `${tableNames.submodel}.name as submodel`,
+  `${tableNames.model_year}.year_num as year`,
+  `${tableNames.vehicle}.created_at`,
+  `${tableNames.vehicle}.updated_at`,
+];
+
 router.get('/', async (req, res, next) => {
   try {
-    const vehicles = await queries.getAllVehicles();
+    const vehicles = await Vehicle.query()
+      .select(fields)
+      .where({
+        'vehicle.deleted_at': null,
+      })
+      .innerJoin('make', 'make.id', 'vehicle.make_id')
+      .innerJoin('model', 'model.id', 'vehicle.model_id')
+      .innerJoin('submodel', 'submodel.id', 'vehicle.submodel_id')
+      .innerJoin('model_year', 'model_year.id', 'vehicle.year_id');
     res.json(vehicles);
   } catch (error) {
     next(error);
@@ -17,7 +36,16 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params;
   try {
-    const vehicle = await queries.getVehicleById(id);
+    const vehicle = await Vehicle.query()
+      .select(fields)
+      .where({ 'vehicle.id': id })
+      .andWhere({
+        'vehicle.deleted_at': null,
+      })
+      .innerJoin('make', 'make.id', 'vehicle.make_id')
+      .innerJoin('model', 'model.id', 'vehicle.model_id')
+      .innerJoin('submodel', 'submodel.id', 'vehicle.submodel_id')
+      .innerJoin('model_year', 'model_year.id', 'vehicle.year_id');
     if (vehicle) {
       res.json(vehicle);
       return;

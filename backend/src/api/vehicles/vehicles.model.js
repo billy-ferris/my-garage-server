@@ -22,7 +22,7 @@ class Vehicle extends Model {
         modelClass: Make,
         join: {
           from: 'vehicle.make_id',
-          to: 'make.id',
+          to: 'make.name',
         },
       },
     };

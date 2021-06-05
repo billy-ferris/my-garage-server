@@ -10,7 +10,6 @@ const fields = [
   `${tableNames.model_year}.year_num as year`,
   `${tableNames.vehicle}.created_at`,
   `${tableNames.vehicle}.updated_at`,
-  `${tableNames.vehicle}.deleted_at`,
 ];
 
 module.exports = {
