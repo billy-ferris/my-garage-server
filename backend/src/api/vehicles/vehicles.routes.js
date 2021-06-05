@@ -1,13 +1,13 @@
 const express = require('express');
 
 const Vehicle = require('./vehicles.model');
+const vehicleInfos = require('./vehicle_infos/vehicle_infos.routes');
 const tableNames = require('../../constants/tableNames');
 
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
 const fields = [
   `${tableNames.vehicle}.id`,
-  `${tableNames.vehicle}.user_id`,
   `${tableNames.make}.name as make`,
   `${tableNames.model}.name as model`,
   `${tableNames.submodel}.name as submodel`,
@@ -15,6 +15,8 @@ const fields = [
   `${tableNames.vehicle}.created_at`,
   `${tableNames.vehicle}.updated_at`,
 ];
+
+router.use('/:vehicle_id/vehicle_infos', vehicleInfos);
 
 router.get('/', async (req, res, next) => {
   try {

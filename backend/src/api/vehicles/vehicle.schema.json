@@ -3,18 +3,18 @@
   "type": "object",
   "title": "Vehicle",
   "description": "The Vehicle",
-  "required": ["user_id", "make_id", "model_id", "submodel_id", "year_id"],
+  "required": [
+    "make_id",
+    "model_id",
+    "submodel_id",
+    "year_id"
+  ],
   "additionalProperties": false,
   "properties": {
     "id": {
       "$id": "#/properties/id",
       "type": "integer",
       "title": "The database ID of the vehicle."
-    },
-    "user_id": {
-      "$id": "#/properties/user_id",
-      "type": "number",
-      "title": "The database ID of the vehicle's user."
     },
     "make_id": {
       "$id": "#/properties/make_id",

@@ -11,7 +11,6 @@ const {
 exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.vehicle, (table) => {
     table.increments();
-    references(table, tableNames.user);
     references(table, tableNames.make);
     references(table, tableNames.model);
     references(table, tableNames.submodel);
@@ -23,6 +22,7 @@ exports.up = async (knex) => {
   await Promise.all([
     knex.schema.createTable(tableNames.vehicle_info, (table) => {
       table.increments();
+      references(table, tableNames.user);
       references(table, tableNames.vehicle);
       table.string('color', 50);
       table.dateTime('purchase_date');
@@ -32,6 +32,7 @@ exports.up = async (knex) => {
       references(table, tableNames.build_type, false);
       table.integer('mileage_bought_at').unsigned();
       table.integer('mileage_at').unsigned();
+      table.dateTime('sold_date');
       table.float('sold_price');
       addDefaultColumns(table);
     }),

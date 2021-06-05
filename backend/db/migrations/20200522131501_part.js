@@ -12,7 +12,7 @@ const {
 exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.part, (table) => {
     table.increments();
-    references(table, tableNames.vehicle);
+    references(table, tableNames.vehicle_info);
     table.string('name').notNullable();
     description(table, 'description');
     references(table, tableNames.part_category);

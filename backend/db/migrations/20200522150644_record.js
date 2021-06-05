@@ -12,7 +12,7 @@ const {
 exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.record, (table) => {
     table.increments();
-    references(table, tableNames.vehicle);
+    references(table, tableNames.vehicle_info);
     description(table, 'description');
     references(table, tableNames.record_type);
     addDefaultColumns(table);
