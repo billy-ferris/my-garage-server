@@ -19,10 +19,12 @@ router.get('/:id', async (req, res, next) => {
     const vehicleInfo = await VehicleInfo.query()
       .where({ id })
       .andWhere('deleted_at', null);
-    if (vehicleInfo) {
+    // TODO: best way to return error and not empty array if id is not found? - applies to all get by IDs
+    if (vehicleInfo.length > 0) {
       res.json(vehicleInfo);
       return;
     }
+    next();
   } catch (error) {
     next(error);
   }
@@ -56,7 +58,11 @@ router.patch('/:id', async (req, res, next) => {
         updated_at: new Date().toISOString(),
       }
     );
-    res.json(vehicleInfo);
+    if (vehicleInfo) {
+      res.json(vehicleInfo);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
@@ -70,7 +76,11 @@ router.delete('/:id', async (req, res, next) => {
         deleted_at: new Date().toISOString(),
       }
     );
-    res.json(vehicleInfo);
+    if (vehicleInfo) {
+      res.json(vehicleInfo);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }

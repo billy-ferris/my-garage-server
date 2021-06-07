@@ -77,7 +77,11 @@ router.patch('/:id', async (req, res, next) => {
       ...req.body,
       updated_at: new Date().toISOString(),
     });
-    res.json(vehicle);
+    if (vehicle) {
+      res.json(vehicle);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
@@ -88,7 +92,11 @@ router.delete('/:id', async (req, res, next) => {
     const vehicle = await Vehicle.query().patchAndFetchById(req.params.id, {
       deleted_at: new Date().toISOString(),
     });
-    res.json(vehicle);
+    if (vehicle) {
+      res.json(vehicle);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }

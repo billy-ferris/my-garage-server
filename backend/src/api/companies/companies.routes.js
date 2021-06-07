@@ -48,7 +48,11 @@ router.patch('/:id', async (req, res, next) => {
       ...req.body,
       updated_at: new Date().toISOString(),
     });
-    res.json(company);
+    if (company) {
+      res.json(company);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
@@ -59,7 +63,11 @@ router.delete('/:id', async (req, res, next) => {
     const company = await Company.query().patchAndFetchById(req.params.id, {
       deleted_at: new Date().toISOString(),
     });
-    res.json(company);
+    if (company) {
+      res.json(company);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }

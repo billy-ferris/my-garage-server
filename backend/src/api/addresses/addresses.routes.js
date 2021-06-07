@@ -59,7 +59,11 @@ router.patch('/:id', async (req, res, next) => {
       ...req.body,
       updated_at: new Date().toISOString(),
     });
-    res.json(address);
+    if (address) {
+      res.json(address);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
@@ -70,7 +74,11 @@ router.delete('/:id', async (req, res, next) => {
     const address = await Address.query().patchAndFetchById(req.params.id, {
       deleted_at: new Date().toISOString(),
     });
-    res.json(address);
+    if (address) {
+      res.json(address);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }

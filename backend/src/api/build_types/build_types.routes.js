@@ -44,7 +44,11 @@ router.patch('/:id', async (req, res, next) => {
       ...req.body,
       updated_at: new Date().toISOString(),
     });
-    res.json(buildType);
+    if (buildType) {
+      res.json(buildType);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
@@ -55,7 +59,11 @@ router.delete('/:id', async (req, res, next) => {
     const buildType = await BuildType.query().patchAndFetchById(req.params.id, {
       deleted_at: new Date().toISOString(),
     });
-    res.json(buildType);
+    if (buildType) {
+      res.json(buildType);
+      return;
+    }
+    next();
   } catch (error) {
     next(error);
   }
