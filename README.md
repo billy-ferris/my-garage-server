@@ -185,9 +185,9 @@ Deleted At - datetime
   - [x] Get By ID
   - [x] Update
   - [x] Delete
-- [ ] Vehicle Specs
-  - [ ] Create
-  - [ ] List
-  - [ ] Get By ID
-  - [ ] Update
-  - [ ] Delete
+- [x] Vehicle Specs
+  - [x] Create
+  - [x] List
+  - [x] Get By ID
+  - [x] Update
+  - [x] Delete

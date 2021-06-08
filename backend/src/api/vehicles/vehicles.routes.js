@@ -18,6 +18,7 @@ const fields = [
 
 router.use('/:vehicle_id/vehicle_infos', vehicleInfos);
 
+// TODO: joins may not be necessary on this endpoint - goes for get by ID below too
 router.get('/', async (req, res, next) => {
   try {
     const vehicles = await Vehicle.query()

@@ -29,7 +29,7 @@ exports.up = async (knex) => {
       table.float('purchase_price');
       table.float('msrp');
       references(table, tableNames.ownership_status);
-      references(table, tableNames.build_type, false);
+      references(table, tableNames.build_type);
       table.integer('mileage_bought_at').unsigned();
       table.integer('mileage_at').unsigned();
       table.dateTime('sold_date');
@@ -38,9 +38,9 @@ exports.up = async (knex) => {
     }),
     knex.schema.createTable(tableNames.vehicle_spec, (table) => {
       table.increments();
-      references(table, tableNames.vehicle);
+      references(table, tableNames.vehicle_info);
       table.string('name').notNullable();
-      table.string('value').notNullable();
+      table.float('value').notNullable();
       table.string('unit');
       addDefaultColumns(table);
     }),

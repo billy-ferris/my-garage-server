@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "vehicle Specification",
+  "description": "The vehicle specification",
+  "required": [
+    "vehicle_info_id",
+    "value"
+  ],
+  "additionalProperties": false,
+  "properties": {
+      "id": {
+        "$id": "#/properties/id",
+        "type": "integer",
+        "title": "The database ID of the vehicle."
+      },
+      "vehicle_info_id": {
+        "$id": "#/properties/vehicle_info_id",
+        "type": "integer",
+        "title": "The id of the individual vehicle."
+      },
+      "name": {
+        "$id": "#/properties/name",
+        "type": "string",
+        "title": "The name of the vehicle spec."
+      },
+      "value": {
+        "$id": "#/properties/value",
+        "type": "number",
+        "title": "The value of the vehicle spec."
+      },
+      "unit": {
+        "$id": "#/properties/unit",
+        "type": "string",
+        "title": "The unit of the vehicle spec."
+      },
+      "created_at": {
+        "$id": "#/properties/created_at",
+        "type": "string",
+        "title": "The creation date of the vehicle make in the database."
+      },
+      "updated_at": {
+        "$id": "#/properties/updated_at",
+        "type": "string",
+        "title": "The date the vehicle make was last updated in the database."
+      },
+      "deleted_at": {
+        "$id": "#/properties/deleted_at",
+        "type": "string",
+        "title": "The date the vehicle make was deleted in the database."
+      }
+  }
+}
