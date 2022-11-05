@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
+require('dotenv').config();
 
 const { NODE_ENV } = process.env;
 

@@ -2,11 +2,12 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       database: process.env.POSTGRES_DB,
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
+      port: 5555,
     },
     migrations: {
       directory: './db/migrations',
@@ -16,9 +17,8 @@ module.exports = {
     },
   },
   test: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
-      // TODO: update postgres container to create test db on start
       database: process.env.POSTGRES_TEST_DB,
       user: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,

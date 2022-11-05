@@ -51,13 +51,14 @@ router.get('/', async (req, res, next) => {
         `${tableNames.build_type}.id`
       )
       .withGraphJoined('[vehicle(joinVehicle), specs(selectSpecFields)]')
+      // TODO: break out into reusable util function? innerJoinById(builder, tableName1, tableName1, columnName(optional?))
       .modifiers({
         joinVehicle: (builder) => {
           builder
             .innerJoin(
               `${tableNames.make}`,
-              `${tableNames.vehicle}.id`,
-              `${tableNames.make}.id`
+              `${tableNames.make}.id`,
+              `${tableNames.vehicle}.make_id`
             )
             .innerJoin(
               `${tableNames.model}`,
@@ -81,7 +82,6 @@ router.get('/', async (req, res, next) => {
         },
       })
       .andWhere('vehicle_info.deleted_at', null);
-    // .andWhere('specs.deleted_at', null);
     res.json(vehicleInfos);
   } catch (error) {
     next(error);

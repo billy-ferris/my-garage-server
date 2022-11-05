@@ -18,7 +18,7 @@ exports.up = async (knex) => {
       email(table, 'email').notNullable().unique();
       table.string('name').notNullable();
       table.string('password', 127).notNullable();
-      table.datetime('last_login');
+      table.dateTime('last_login');
       addDefaultColumns(table);
     }),
     createNameTable(knex, tableNames.ownership_status),
